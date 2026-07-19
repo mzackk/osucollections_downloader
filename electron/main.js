@@ -253,6 +253,26 @@ ipcMain.handle('beatmap:checkExists', (_, songsFolder, beatmapsetId) => {
   } catch { return false }
 })
 
+// Helper to recursively update timestamps of files and folders to the current time
+function touchDirectory(dirPath) {
+  const now = new Date()
+  try {
+    fs.utimesSync(dirPath, now, now)
+    const entries = fs.readdirSync(dirPath)
+    for (const entry of entries) {
+      const fullPath = path.join(dirPath, entry)
+      const stat = fs.statSync(fullPath)
+      if (stat.isDirectory()) {
+        touchDirectory(fullPath)
+      } else {
+        fs.utimesSync(fullPath, now, now)
+      }
+    }
+  } catch (err) {
+    console.error(`Failed to touch directory timestamps for ${dirPath}:`, err)
+  }
+}
+
 // ─── IPC: Download ────────────────────────────────────────────────────────────
 
 ipcMain.handle('beatmap:download', async (event, { beatmapsetId, mirrors, songsFolder }) => {
@@ -286,9 +306,12 @@ ipcMain.handle('beatmap:download', async (event, { beatmapsetId, mirrors, songsF
         const zip = new AdmZip(tmpFile)
         const extractDir = path.join(songsFolder, String(beatmapsetId))
         zip.extractAllTo(extractDir, true)
+        touchDirectory(extractDir)
       } catch {
         const destFile = path.join(songsFolder, `${beatmapsetId}.osz`)
         fs.renameSync(tmpFile, destFile)
+        const now = new Date()
+        try { fs.utimesSync(destFile, now, now) } catch {}
       }
       if (fs.existsSync(tmpFile)) fs.unlinkSync(tmpFile)
 

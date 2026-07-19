@@ -26,10 +26,14 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
+      devTools: !!process.env.VITE_DEV_SERVER_URL,
     },
     titleBarStyle: 'default',
     show: false,
   })
+
+  // Remove the default menu bar (File, Edit, View, etc.) on Windows/Linux
+  mainWindow.removeMenu()
 
   if (process.env.VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL)

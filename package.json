@@ -1,7 +1,7 @@
 {
   "name": "osu-collection-downloader",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Desktop app to download osu! beatmap collections from osu!Collector",
   "repository": {

@@ -1,0 +1,27 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Glow/Ring -->
+  <circle cx="128" cy="128" r="120" fill="none" stroke="#ff66aa" stroke-width="4" opacity="0.3" />
+  
+  <!-- Main Pink Circle Background -->
+  <circle cx="128" cy="128" r="110" fill="#ff66aa" />
+  
+  <!-- Subtle Triangle Pattern Overlay (osu! style) -->
+  <path d="M60 60 L80 40 L100 60 Z" fill="#ffffff" opacity="0.1" />
+  <path d="M160 80 L180 60 L200 80 Z" fill="#ffffff" opacity="0.1" />
+  <path d="M40 160 L60 140 L80 160 Z" fill="#ffffff" opacity="0.1" />
+  <path d="M180 180 L200 160 L220 180 Z" fill="#ffffff" opacity="0.1" />
+  <path d="M120 220 L140 200 L160 220 Z" fill="#ffffff" opacity="0.1" />
+
+  <!-- "osu!" Text -->
+  <text x="128" y="145" font-family="sans-serif" font-weight="bold" font-size="80" fill="#ffffff" text-anchor="middle">osu!</text>
+
+  <!-- Download Cloud Overlay (Bottom Right) -->
+  <!-- Background circle for contrast -->
+  <circle cx="190" cy="190" r="45" fill="#2a2235" stroke="#ff66aa" stroke-width="3" />
+  
+  <!-- Cloud Icon -->
+  <path d="M190 165 C175 165 165 175 165 185 C155 185 150 193 150 200 C150 210 158 215 165 215 L215 215 C222 215 230 210 230 200 C230 190 222 185 215 185 C215 175 205 165 190 165 Z" fill="none" stroke="#ff66aa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Downward Arrow -->
+  <path d="M190 185 V205 M180 195 L190 205 L200 195" fill="none" stroke="#ff66aa" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

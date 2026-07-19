@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Desktop app to download osu! beatmap collections from osu!Collector",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzackk/osucollections_downloader.git"
+  },
   "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
@@ -29,6 +33,13 @@
   "build": {
     "appId": "com.osu.collector.downloader",
     "productName": "osu! Collection Downloader",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "mzackk",
+        "repo": "osucollections_downloader"
+      }
+    ],
     "directories": {
       "output": "release"
     },
